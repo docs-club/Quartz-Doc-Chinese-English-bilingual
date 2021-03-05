@@ -76,7 +76,7 @@ L 和 W 字符也可以在 day-of-month 字段中组合，产生 LW，即一个�
 
 - `#` - used to specify `the nth` XXX day of the month. For example, the value of `6#3` in the day-of-week field means `the third Friday of the month` (day 6 = Friday and `#3` = the 3rd one in the month). Other examples: `2#1` = the first Monday of the month and `4#5` = the fifth Wednesday of the month. Note that if you specify `#5` and there is not 5 of the given day-of-week in the month, then no firing will occur that month.
 
-用于指定一个月的第 n 个日期。例如，day-of-week 字段中的值 `6#3` 表示这个月的第三个星期五（第 6 天是星期五，`#3`表示这个月的第三个星期五）。其他例子:`2#1` 表示这个月的第一个星期一，`4#5` 表示这个月的第五个星期三。请注意，如果您指定了 `#5`，而这个月中给定的星期几中没有 5 个，那么这个月将不会发生触发。
+用于指定一个月的第 n 个日期。例如，day-of-week 字段中的值 `6#3` 表示这个月的第三个星期五（第 6 天是星期五，`#3`表示这个月的第三个星期五）。其他例子:`2#1` 表示这个月的第一个星期一，`4#5` 表示这个月的第五个星期三。请注意，如果你指定了 `#5`，而这个月中给定的星期几中没有 5 个，那么这个月将不会发生触发。
 
 > The legal characters and the names of months and days of the week are not case sensitive. MON is the same as mon.
 

@@ -4,9 +4,7 @@
 
 Listeners are objects that you create to perform actions based on events occurring within the scheduler. As you can probably guess, TriggerListeners receive events related to triggers, and JobListeners receive events related to jobs.
 
-监听器是用于根据调度程序中发生的事件执行操作的对象。正如你可能猜到的，TriggerListener 接收与触发器相关的事件，而 JobListener 接收与作业相关的事件。
-
-创建以执行基于调度程序中发生的事件的操作
+监听器对象根据调度程序中发生的事件而执行操作。正如猜到的那样，TriggerListener 接收与触发器相关的事件，而 JobListener 接收与作业相关的事件。
 
 Trigger-related events include: trigger firings, trigger mis-firings (discussed in the “Triggers” section of this document), and trigger completions (the jobs fired off by the trigger is finished).
 
@@ -59,7 +57,7 @@ To create a listener, simply create an object that implements the org.quartz.Tri
 
 For your convenience, tather than implementing those interfaces, your class could also extend the class JobListenerSupport or TriggerListenerSupport and simply override the events you’re interested in.
 
-为了方便，除了实现这些接口，你还可以继承 JobListenerSupport 或 TriggerListenerSupport，并简单地覆盖感兴趣的事件。
+为了方便，除了实现这些接口，还可以继承 JobListenerSupport 或 TriggerListenerSupport，并简单地覆盖感兴趣的事件。
 
 Listeners are registered with the scheduler’s ListenerManager along with a Matcher that describes which Jobs/Triggers the listener wants to receive events for.
 
@@ -79,7 +77,7 @@ scheduler.getListenerManager().addJobListener(myJobListener, KeyMatcher.jobKeyEq
 
 You may want to use static imports for the matcher and key classes, which will make your defining the matchers cleaner:
 
-你可能想要为 matcher 和 key 类使用静态导入，这将使你的 matcher 定义更清晰：
+如果为 matcher 和 key 类使用静态导入，将使 matcher 定义更清晰：
 
 ```java
 import static org.quartz.JobKey.*;

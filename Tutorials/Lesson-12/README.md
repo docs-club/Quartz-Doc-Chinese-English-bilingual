@@ -16,7 +16,7 @@ Quartz 附带的提供各种实用功能的插件可以在 org.quartz.plugins �
 
 When a trigger fires, the Job it is associated to is instantiated via the JobFactory configured on the Scheduler. The default JobFactory simply calls newInstance() on the job class. You may want to create your own implementation of JobFactory to accomplish things such as having your application’s IoC or DI container produce/initialize the job instance.
 
-当触发器触发时，它关联的作业将通过调度程序上配置的 JobFactory 实例化。默认的 JobFactory 只是在作业类上调用 newInstance()。您可能希望创建自己的 JobFactory 实现来完成一些事情，比如让应用程序的 IoC 或 DI 容器生成/初始化作业实例。
+当触发器触发时，它关联的作业将通过调度程序上配置的 JobFactory 实例化。默认的 JobFactory 只是在作业类上调用 newInstance()。可能希望创建自己的 JobFactory 实现来完成一些事情，比如让应用程序的 IoC 或 DI 容器生成/初始化作业实例。
 
 See the org.quartz.spi.JobFactory interface, and the associated Scheduler.setJobFactory(fact) method.
 
@@ -26,7 +26,7 @@ See the org.quartz.spi.JobFactory interface, and the associated Scheduler.setJob
 
 Quartz also provides a number of utility Jobs that you can use in your application for doing things like sending e-mails and invoking EJBs. These out-of-the-box Jobs can be found documented in the org.quartz.jobs package.
 
-Quartz 还提供了许多实用程序作业，您可以在应用程序中使用它们来做诸如发送电子邮件和调用 ejb 之类的事情。这些开箱即用的作业可以在 org.quartz.jobs 中找到。
+Quartz 还提供了许多实用程序作业，可以在应用程序中使用它们来做诸如发送电子邮件和调用 ejb 之类的事情。这些开箱即用的作业可以在 org.quartz.jobs 中找到。
 
 ---
 

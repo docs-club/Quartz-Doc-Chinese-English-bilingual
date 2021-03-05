@@ -14,11 +14,11 @@ Clustering currently works with the JDBC-Jobstore (JobStoreTX or JobStoreCMT) an
 
 > Never run clustering on separate machines, unless their clocks are synchronized using some form of time-sync service (daemon) that runs very regularly (the clocks must be within a second of each other). See http://www.boulder.nist.gov/timefreq/service/its.htm if you are unfamiliar with how to do this.
 
-永远不要在单独的机器上运行集群，除非它们的时钟是使用某种形式的定时运行的时间同步服务（守护进程）来同步的（时钟之间的间隔必须在一秒之内）。如果您不熟悉如何做到这一点，请参阅 http://www.boulder.nist.gov/timefreq/service/its.htm。
+永远不要在单独的机器上运行集群，除非它们的时钟是使用某种形式的定时运行的时间同步服务（守护进程）来同步的（时钟之间的间隔必须在一秒之内）。如果不熟悉如何做到这一点，请参阅 http://www.boulder.nist.gov/timefreq/service/its.htm。
 
 > Never fire-up a non-clustered instance against the same set of tables that any other instance is running against. You may get serious data corruption, and will definitely experience erratic behavior.
 
-永远不要针对正在运行的其他实例所针对的同一组表启动非集群实例。您可能会遇到严重的数据损坏，并且肯定会出现不稳定的行为。
+永远不要针对正在运行的其他实例所针对的同一组表启动非集群实例。这么做可能会遇到严重的数据损坏，并且肯定会出现不稳定的行为。
 
 Only one node will fire the job for each firing. What I mean by that is, if the job has a repeating trigger that tells it to fire every 10 seconds, then at 12:00:00 exactly one node will run the job, and at 12:00:10 exactly one node will run the job, etc. It won’t necessarily be the same node each time - it will more or less be random which node runs it. The load balancing mechanism is near-random for busy schedulers (lots of triggers) but favors the same node that just was just active for non-busy (e.g. one or two triggers) schedulers.
 
@@ -26,11 +26,11 @@ Only one node will fire the job for each firing. What I mean by that is, if the 
 
 ####Clustering With TerracottaJobStore Simply configure the scheduler to use TerracottaJobStore (covered in Lesson 9: JobStores), and your scheduler will be all set for clustering.
 
-只需配置调度程序来使用 TerracottaJobStore（在第 9 课：JobStores 中涉及），您的调度程序就会被设置为集群。
+只需配置调度程序来使用 TerracottaJobStore（在第 9 课：JobStores 中涉及），调度程序就会被设置为集群。
 
 You may also want to consider implications of how you setup your Terracotta server, particularly configuration options that turn on features such as persistence, and running an array of Terracotta servers for HA.
 
-您可能还需要考虑如何设置 Terracotta 服务器，特别是启用持久性等特性的配置选项，以及运行一系列 Terracotta 服务器以实现 HA。
+可能还需要考虑如何设置 Terracotta 服务器，特别是启用持久性等特性的配置选项，以及运行一系列 Terracotta 服务器以实现 HA。
 
 The Enterprise Edition of TerracottaJobStore provides advanced Quartz Where features, that allow for intelligent targeting of jobs to appropriate cluster nodes.
 
@@ -52,11 +52,11 @@ Jobs can also execute within a JTA transaction (UserTransaction) by setting the 
 
 If you would like to indicate per job whether a JTA transaction should wrap its execution, then you should use the @ExecuteInJTATransaction annotation on the job class.
 
-如果您想要指示每个作业是否应该包装 JTA 事务的执行，那么您应该在作业类上使用 @ExecuteInJTATransaction 注解。
+如果想要指示每个作业是否应该包装 JTA 事务的执行，那么应该在作业类上使用 @ExecuteInJTATransaction 注解。
 
 Aside from Quartz automatically wrapping Job executions in JTA transactions, calls you make on the Scheduler interface also participate in transactions when using JobStoreCMT. Just make sure you’ve started a transaction before calling a method on the scheduler. You can do this either directly, through the use of UserTransaction, or by putting your code that uses the scheduler within a SessionBean that uses container managed transactions.
 
-除了在 JTA 事务中自动包装作业执行之外，在使用 JobStoreCMT 时，调度程序接口上的调用也会参与事务。只需确保在调用调度程序上的方法之前已经启动了事务。您可以通过使用 UserTransaction 直接做到这一点，也可以将使用调度器的代码放在使用容器管理事务的 SessionBean 中。
+除了在 JTA 事务中自动包装作业执行之外，在使用 JobStoreCMT 时，调度程序接口上的调用也会参与事务。只需确保在调用调度程序上的方法之前已经启动了事务。可以通过使用 UserTransaction 直接做到这一点，也可以将使用调度器的代码放在使用容器管理事务的 SessionBean 中。
 
 ---
 
